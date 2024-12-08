@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import React, { useState } from "react";
@@ -10,13 +10,19 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isCustomerOpen, setCustomerOpen] = useState(false);
-   const [isSalesOpen, setSalesOpen] = useState(false);
+  const [isSalesOpen, setSalesOpen] = useState(false);
+  const [isExpenseOpen, setExpenseOpen] = useState(false);
+  const [isSupplierOpen, setSupplierOpen] = useState(false); // State for Supplier dropdown
 
   const toggleDropdown = (type: string) => {
     if (type === "customer") {
       setCustomerOpen(!isCustomerOpen);
-    } else {
+    } else if (type === "sales") {
       setSalesOpen(!isSalesOpen);
+    } else if (type === "expense") {
+      setExpenseOpen(!isExpenseOpen);
+    } else if (type === "supplier") {
+      setSupplierOpen(!isSupplierOpen); // Toggle Supplier dropdown
     }
   };
 
@@ -38,7 +44,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
           stroke="currentColor"
           className="w-6 h-6"
         >
-        
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -75,7 +80,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               </Link>
             </li>
 
-         
             {/* Customer Dropdown */}
             <li>
               <button
@@ -133,10 +137,11 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               </ul>
             </li>
 
+            {/* Expense Dropdown */}
             <li>
               <button
                 type="button"
-                onClick={() => toggleDropdown("customer")}
+                onClick={() => toggleDropdown("expense")}
                 className="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -150,7 +155,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Expense</span>
                 <svg
                   className={`w-3 h-3 transform transition-transform ${
-                    isCustomerOpen ? "rotate-180" : ""
+                    isExpenseOpen ? "rotate-180" : ""
                   }`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -167,7 +172,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               </button>
               <ul
                 className={`overflow-hidden transition-all duration-300 ${
-                  isCustomerOpen ? "max-h-40" : "max-h-0"
+                  isExpenseOpen ? "max-h-40" : "max-h-0"
                 }`}
               >
                 <li>
@@ -175,7 +180,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                     href="/Expense/add-expense"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Add Expense
+                    New Expense
                   </Link>
                 </li>
                 <li>
@@ -191,14 +196,14 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                     href="/Expense/expenseCategory"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                     Expenses Category
+                    All Expenses
                   </Link>
                 </li>
               </ul>
             </li>
 
             {/* Sales Dropdown */}
-             <li>
+            <li>
               <button
                 type="button"
                 onClick={() => toggleDropdown("sales")}
@@ -208,11 +213,11 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                   className="w-5 h-5 text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
-                  viewBox="0 0 18 21"
+                  viewBox="0 0 24 24"
                 >
-                  <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                  <path d="M12 2L10 6H6L8 10H10L8 14L10 18H12L14 14L12 10H14L16 6H12Z" />
                 </svg>
-                <span className="flex-1 ml-3 text-left whitespace-nowrap">Supplier</span>
+                <span className="flex-1 ml-3 text-left whitespace-nowrap">Sales</span>
                 <svg
                   className={`w-3 h-3 transform transition-transform ${
                     isSalesOpen ? "rotate-180" : ""
@@ -237,6 +242,63 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               >
                 <li>
                   <Link
+                    href="/Sales/new-sale"
+                    className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    New Sale
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/Sales/all-sales"
+                    className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    All Sales
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            {/* Supplier Dropdown */}
+            <li>
+              <button
+                type="button"
+                onClick={() => toggleDropdown("supplier")}
+                className="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <svg
+                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2L10 6H6L8 10H10L8 14L10 18H12L14 14L12 10H14L16 6H12Z" />
+                </svg>
+                <span className="flex-1 ml-3 text-left whitespace-nowrap">Supplier</span>
+                <svg
+                  className={`w-3 h-3 transform transition-transform ${
+                    isSupplierOpen ? "rotate-180" : ""
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M1 1l4 4 4-4"
+                  />
+                </svg>
+              </button>
+              <ul
+                className={`overflow-hidden transition-all duration-300 ${
+                  isSupplierOpen ? "max-h-40" : "max-h-0"
+                }`}
+              >
+                <li>
+                  <Link
                     href="/supplier/add-supplier"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -252,9 +314,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                   </Link>
                 </li>
               </ul>
-            </li> 
-
-
+            </li>
           </ul>
         </div>
       </aside>
