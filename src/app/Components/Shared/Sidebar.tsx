@@ -148,7 +148,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 >
                   <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                 </svg>
-                <span className="flex-1 ml-3 text-left whitespace-nowrap">Sales</span>
+                <span className="flex-1 ml-3 text-left whitespace-nowrap">Supplier</span>
                 <svg
                   className={`w-3 h-3 transform transition-transform ${
                     isSalesOpen ? "rotate-180" : ""
@@ -173,18 +173,18 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               >
                 <li>
                   <Link
-                    href="/sales/add-sale"
+                    href="/supplier/add-supplier"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Add Sales
+                    Add Supplier
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/sales/all-sales"
+                    href="/supplier/all-suppliers"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    All Sales
+                    All Suppliers
                   </Link>
                 </li>
               </ul>
