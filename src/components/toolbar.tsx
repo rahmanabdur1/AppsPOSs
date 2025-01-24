@@ -5,21 +5,29 @@ import { PiFunnel, PiTextColumns } from "react-icons/pi";
 import { type Table as ReactTableType } from "@tanstack/react-table";
 import TrashIcon from "@/shared/icons/trash";
 
-const statusOptions = [
+// const statusOptions = [
+//   { label: "Paid", value: "Paid" },
+//   { label: "Pending", value: "Pending" },
+//   { label: "Draft", value: "Draft" },
+// ];
+type Status = "Paid" | "Pending" | "Draft";
+
+const statusOptions: { label: string; value: Status }[] = [
   { label: "Paid", value: "Paid" },
   { label: "Pending", value: "Pending" },
   { label: "Draft", value: "Draft" },
 ];
 
-interface TableToolbarProps<T extends Record<string, any>> {
-  table: ReactTableType<T>;
+interface TableToolbarProps<TData> {
+  table: ReactTableType<TData>;
 }
 
-export default function TableToolbar<TData extends Record<string, any>>({
+export default function TableToolbar<TData>({
   table,
 }: TableToolbarProps<TData>) {
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [isColumnDrawerOpen, setIsColumnDrawerOpen] = useState(false);
+
 
   return (
     <div className="flex items-center gap-2 justify-between w-full mt-5 mb-4 font-[family-name:var(--font-lexend)]">
@@ -180,17 +188,19 @@ export default function TableToolbar<TData extends Record<string, any>>({
               <Select
                 label="Status"
                 options={statusOptions}
-                value={table.getColumn("status")?.getFilterValue() ?? []}
-                onChange={(e) => table.getColumn("status")?.setFilterValue(e)}
                 placeholder="Status..."
-                className="w-full"
-                getOptionValue={(option: { value: any }) => option.value}
-                getOptionDisplayValue={(option: { value: string }) => renderOptionDisplayValue(option.value)}
-                displayValue={(selected: string) => renderOptionDisplayValue(selected)}
                 dropdownClassName="!z-20 h-auto"
                 selectClassName="h-[38px] ring-0"
+                className="w-full"
+                value={(table.getColumn("status")?.getFilterValue() as Status) ?? ""}
+                onChange={(e) => table.getColumn("status")?.setFilterValue(e as Status)}
+                getOptionValue={(option) => option.value} // Cast option as { value: Status }
+                getOptionDisplayValue={(option) => renderOptionDisplayValue(option.value as Status)} // Cast option.value
+                displayValue={(selected) => renderOptionDisplayValue(selected as Status)} // Cast selected value as Status
               />
+
             </div>
+
             {/* Clear Button */}
             <Button
               onClick={() => {
@@ -260,7 +270,8 @@ export default function TableToolbar<TData extends Record<string, any>>({
   );
 }
 
-export function renderOptionDisplayValue(value: string) {
+
+export function renderOptionDisplayValue(value: Status) {
   switch (value.toLowerCase()) {
     case "pending":
       return (
@@ -279,16 +290,11 @@ export function renderOptionDisplayValue(value: string) {
     case "draft":
       return (
         <div className="flex items-center">
-          <Badge color="gray" renderAsDot />
+          <Badge color="success" renderAsDot />
           <Text className="ms-2 font-medium capitalize text-gray-dark">{value}</Text>
         </div>
       );
     default:
-      return (
-        <div className="flex items-center">
-          <Badge color="gray" renderAsDot />
-          <Text className="ms-2 font-medium capitalize text-gray-dark">{value}</Text>
-        </div>
-      );
+      return null; // Handle unexpected cases
   }
 }

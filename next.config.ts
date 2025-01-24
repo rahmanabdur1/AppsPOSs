@@ -2,11 +2,22 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true, // Enables React strict mode
-  swcMinify: true, // Uses SWC for minifying the JavaScript
   images: {
-    domains: ["flowbite.com", "via.placeholder.com",
-      "isomorphic-furyroad.s3.amazonaws.com"
-    ], // Add 'via.placeholder.com' here
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "flowbite.com", // Allow images from flowbite.com
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com", // Allow images from via.placeholder.com
+      },
+      {
+        protocol: "https",
+        hostname: "isomorphic-furyroad.s3.amazonaws.com", // Allow images from this Amazon S3 bucket
+      },
+     
+    ],
   },
 };
 

@@ -14,12 +14,13 @@ const options = [
   { value: 20, label: "20" },
 ];
 
-
-export default function TablePagination<TData extends Record<string, any>>({
-  table,
-}: {
+type TablePaginationProps<TData> = {
   table: ReactTableType<TData>;
-}) {
+};
+
+export default function TablePagination<TData>({
+  table,
+}: TablePaginationProps<TData>) {
   return (
     <div className="flex w-full items-center mt-4 justify-between @container">
       <div className="hidden @2xl:block">
@@ -92,7 +93,3 @@ export default function TablePagination<TData extends Record<string, any>>({
     </div>
   );
 }
-
-
-
-
