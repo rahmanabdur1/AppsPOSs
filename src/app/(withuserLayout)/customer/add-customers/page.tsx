@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ExpenseCategory = () => {
+const AddCustomer = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const ExpenseCategory = () => {
     );
 };
 
-export default ExpenseCategory;
+export default AddCustomer;

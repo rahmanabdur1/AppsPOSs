@@ -119,7 +119,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               >
                 <li>
                   <Link
-                    href="/customer/add-customer"
+                    href="/customer/add-customers"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     Add Customer
@@ -176,7 +176,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               >
                 <li>
                   <Link
-                    href="/Expense/add-expense"
+                    href="/expense/add-expense"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     New Expense
@@ -184,7 +184,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </li>
                 <li>
                   <Link
-                    href="/Expense/all-expenses"
+                    href="/expense/all-expenses"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     All Expenses
@@ -192,7 +192,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </li>
                 <li>
                   <Link
-                    href="/Expense/expenseCategory"
+                    href="/expense/expenseCategory"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     All Categories

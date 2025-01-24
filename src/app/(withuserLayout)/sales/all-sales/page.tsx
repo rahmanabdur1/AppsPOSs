@@ -1,14 +1,11 @@
+import React from 'react';
 
-
-
-
-const AllSales: React.FC = () => {
-
+const AllSales = () => {
     return (
-        <>
-            hlo
-        </>
-    )
-}
+        <div>
+            
+        </div>
+    );
+};
 
 export default AllSales;
