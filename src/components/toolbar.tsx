@@ -83,9 +83,10 @@ export default function TableToolbar<TData>({
                 type="search"
                 label="Company"
                 placeholder="Enter company"
-                value={table.getColumn("company")?.getFilterValue() ?? ""}
+                value={table.getColumn("company")?.getFilterValue() ?? ""}  // Make sure this always returns a string
                 onChange={(e) => table.getColumn("company")?.setFilterValue(e.target.value)}
               />
+
 
               <Input
                 label="Designation"
