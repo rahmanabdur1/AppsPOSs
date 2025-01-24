@@ -90,7 +90,7 @@ export default function TableToolbar<TData>({
               <Input
                 label="Designation"
                 type="search"
-                value={table.getColumn("designation")?.getFilterValue() ?? ""}
+                value={String(table.getColumn("designation")?.getFilterValue() ?? "")}
                 placeholder="Enter designation"
                 onChange={(e) => table.getColumn("designation")?.setFilterValue(e.target.value)}
               />
@@ -99,7 +99,7 @@ export default function TableToolbar<TData>({
                 label="Department"
                 type="search"
                 placeholder="Enter department"
-                value={table.getColumn("department")?.getFilterValue() ?? ""}
+                value={String(table.getColumn("department")?.getFilterValue() ?? "")}
                 onChange={(e) => table.getColumn("department")?.setFilterValue(e.target.value)}
               />
 
@@ -107,7 +107,7 @@ export default function TableToolbar<TData>({
                 label="Industry"
                 type="search"
                 placeholder="Enter industry"
-                value={table.getColumn("industry")?.getFilterValue() ?? ""}
+                value={String(table.getColumn("industry")?.getFilterValue() ?? "")}
                 onChange={(e) => table.getColumn("industry")?.setFilterValue(e.target.value)}
               />
 
@@ -115,7 +115,7 @@ export default function TableToolbar<TData>({
                 label="Country"
                 type="search"
                 placeholder="Enter country"
-                value={table.getColumn("country")?.getFilterValue() ?? ""}
+                value={String(table.getColumn("country")?.getFilterValue() ?? "")}
                 onChange={(e) => table.getColumn("country")?.setFilterValue(e.target.value)}
               />
 
@@ -123,7 +123,7 @@ export default function TableToolbar<TData>({
                 label="City"
                 type="search"
                 placeholder="Enter city"
-                value={table.getColumn("city")?.getFilterValue() ?? ""}
+                value={String(table.getColumn("city")?.getFilterValue() ?? "")}
                 onChange={(e) => table.getColumn("city")?.setFilterValue(e.target.value)}
               />
 
@@ -131,7 +131,7 @@ export default function TableToolbar<TData>({
                 label="State"
                 type="search"
                 placeholder="Enter state"
-                value={table.getColumn("state")?.getFilterValue() ?? ""}
+                value={String(table.getColumn("state")?.getFilterValue() ?? "")}
                 onChange={(e) => table.getColumn("state")?.setFilterValue(e.target.value)}
               />
 
@@ -164,14 +164,14 @@ export default function TableToolbar<TData>({
                     type="date"
                     className="h-9 w-full border rounded-md px-2"
                     placeholder="Start Date"
-                    value={table.getColumn("createDate")?.getFilterValue() ?? ""}
+                    value={String(table.getColumn("createDate")?.getFilterValue() ?? "")}
                     onChange={(e) => table.getColumn("createDate")?.setFilterValue(e.target.value)}
                   />
                   <input
                     type="date"
                     className="h-9 w-full border rounded-md px-2"
                     placeholder="End Date"
-                    value={table.getColumn("createDate")?.getFilterValue() ?? ""}
+                    value={String(table.getColumn("createDate")?.getFilterValue() ?? "")}
                     onChange={(e) => table.getColumn("createDate")?.setFilterValue(e.target.value)}
                   />
                 </div>
@@ -181,7 +181,7 @@ export default function TableToolbar<TData>({
                 label="Create By"
                 type="search"
                 placeholder="Enter created by"
-                value={table.getColumn("createdBy")?.getFilterValue() ?? ""}
+                value={String(table.getColumn("createdBy")?.getFilterValue() ?? "")}
                 onChange={(e) => table.getColumn("createdBy")?.setFilterValue(e.target.value)}
               />
 
