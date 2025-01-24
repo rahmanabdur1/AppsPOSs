@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // Import useRouter
+import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useAppDispatch } from "@/lib/hooks";
+import { addCustomer } from "@/lib/features/customerSlice";
 
 interface FormFields {
+  createdDate: string;
   customerID: string;
   firstName: string;
   lastName: string;
@@ -12,11 +15,12 @@ interface FormFields {
   designation: string;
   department: string;
   industry: string;
-  email: string[]; // Updated to handle multiple emails
+  email: string[];
   mobileNumber: string[];
   phoneNumber: string[];
   fax?: string;
   country: string;
+  id: string;
   address: string;
   city: string;
   state: string;
@@ -47,23 +51,37 @@ interface FormFields {
 }
 
 const AddCustomer: React.FC = () => {
-  const router = useRouter(); // Initialize the router
-  const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<FormFields>();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue, 
+    formState: { errors },
+  } = useForm<FormFields>();
   const [emailFields, setEmailFields] = useState<string[]>([""]);
   const [mobileNumberFields, setMobileNumberFields] = useState<string[]>([""]);
   const [phoneNumberFields, setPhoneNumberFields] = useState<string[]>([""]);
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
-    console.log("Form Data:", data);
-    resetForm();
-    router.push("/customer/all-customers"); // Navigate to the all-customers route
+  const resetForm = () => {
+    reset();
+    setEmailFields([""]);
+    setMobileNumberFields([""]);
+    setPhoneNumberFields([""]);
   };
 
-  const resetForm = () => {
-    reset(); // Reset form fields managed by react-hook-form
-    setEmailFields([""]); // Reset the dynamic email fields to a single empty input
-    setMobileNumberFields([""]); // Reset the dynamic mobile number fields
-    setPhoneNumberFields([""]); // Reset the dynamic phone number fields
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
+    const customerData = {
+      ...data,
+      createdDate: data.createdDate || new Date().toISOString(),
+    };
+
+  
+    dispatch(addCustomer(customerData));
+ 
+    resetForm();
+    router.push("/customer/all-customers");
   };
 
   const handleAddEmailField = () => {
@@ -116,6 +134,7 @@ const AddCustomer: React.FC = () => {
     setPhoneNumberFields(updatedFields);
     setValue("phoneNumber", updatedFields); // Update the value in react-hook-form
   };
+
 
   return (
     <div className="w-full p-6 bg-white shadow-md rounded-lg">

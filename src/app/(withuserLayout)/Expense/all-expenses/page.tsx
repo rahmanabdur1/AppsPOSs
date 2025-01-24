@@ -38,13 +38,11 @@ const ExpenseList: React.FC = () => {
 
   
     return (
-        <div className="w-full p-6">
+        <div className="w-full pl-[1.5%] pr-[3.5%]">
             <h1 className="text-2xl font-bold mb-6">Expense Lists</h1>
-            <div className="w-full bg-white shadow-md rounded-lg">
-                {/* Table */}
-                <div className="relative overflow-x-auto mt-6">
-                    <table className="w-full text-sm text-left text-gray-500">
-                        <thead className="text-xs text-gray-700 uppercase bg-indigo-50">
+            <div className="overflow-x-auto shadow-md sm:rounded-md">
+          <table className="w-full border text-sm text-left text-gray-700">
+            <thead className="border-b text-gray-600 text-[13px] uppercase bg-gray-100">
                             <tr>
                                 <th className="px-6 py-3">Expense ID</th>
                                 <th className="px-6 py-3">Expense For</th>
@@ -81,36 +79,37 @@ const ExpenseList: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <nav className="flex items-center justify-between pt-4">
-                <span className="text-sm font-normal text-gray-500">
-                    Showing <span className="font-semibold text-gray-900">1-10</span> of{" "}
-                    <span className="font-semibold text-gray-900">100</span>
-                </span>
-                <ul className="inline-flex items-center space-x-2">
-                    <li>
-                        <a href="#" className="px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200">
-                            Previous
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200">
-                            1
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200">
-                            2
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200">
-                            Next
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+
+                <nav className="flex  mb-8 items-center  justify-between pt-4" aria-label="Table navigation">
+        <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-900 dark:text-white">1-10</span> of <span className="font-semibold text-gray-900 dark:text-white">1000</span></span>
+        <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+          <li>
+            <a href="#" className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+          </li>
+          <li>
+            <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+          </li>
+          <li>
+            <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+          </li>
+          <li>
+            <a href="#" aria-current="page" className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+          </li>
+          <li>
+            <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+          </li>
+          <li>
+            <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+          </li>
+          <li>
+            <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+          </li>
+        </ul>
+      </nav>
+      </div>
+        
+        
+      
     );
 };
 

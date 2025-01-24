@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-
 interface SidebarProps {
   className?: string;
 }
@@ -31,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   };
 
   return (
-    <div className={`your-default-styles ${className || ''}`}>
+    <div className={` your-default-styles ${className || ''}`}>
       {/* Mobile Toggle Button */}
       <button
         className="xl:hidden fixed top-4 left-4 z-50 bg-gray-800 text-white p-2 rounded-full"
@@ -55,8 +54,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-16 left-0 z-40 w-64 h-full bg-gray-50 dark:bg-gray-800 transition-transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } xl:translate-x-0`}
+        className={`fixed top-16 left-0 z-40 w-[270px] h-full bg-gray-50 dark:bg-gray-800 transition-transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } xl:translate-x-0`}
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto">
@@ -96,8 +96,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </svg>
                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Customer</span>
                 <svg
-                  className={`w-3 h-3 transform transition-transform ${isCustomerOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-3 h-3 transform transition-transform ${
+                    isCustomerOpen ? "rotate-180" : ""
+                  }`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 10 6"
@@ -112,8 +113,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </svg>
               </button>
               <ul
-                className={`overflow-hidden transition-all duration-300 ${isCustomerOpen ? "max-h-40" : "max-h-0"
-                  }`}
+                className={`overflow-hidden transition-all duration-300 ${
+                  isCustomerOpen ? "max-h-40" : "max-h-0"
+                }`}
               >
                 <li>
                   <Link
@@ -151,8 +153,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </svg>
                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Expense</span>
                 <svg
-                  className={`w-3 h-3 transform transition-transform ${isExpenseOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-3 h-3 transform transition-transform ${
+                    isExpenseOpen ? "rotate-180" : ""
+                  }`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 10 6"
@@ -167,8 +170,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </svg>
               </button>
               <ul
-                className={`overflow-hidden transition-all duration-300 ${isExpenseOpen ? "max-h-40" : "max-h-0"
-                  }`}
+                className={`overflow-hidden transition-all duration-300 ${
+                  isExpenseOpen ? "max-h-40" : "max-h-0"
+                }`}
               >
                 <li>
                   <Link
@@ -191,7 +195,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                     href="/Expense/expenseCategory"
                     className="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    All Expenses
+                    All Categories
                   </Link>
                 </li>
               </ul>
@@ -214,8 +218,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </svg>
                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Sales</span>
                 <svg
-                  className={`w-3 h-3 transform transition-transform ${isSalesOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-3 h-3 transform transition-transform ${
+                    isSalesOpen ? "rotate-180" : ""
+                  }`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 10 6"
@@ -230,8 +235,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </svg>
               </button>
               <ul
-                className={`overflow-hidden transition-all duration-300 ${isSalesOpen ? "max-h-40" : "max-h-0"
-                  }`}
+                className={`overflow-hidden transition-all duration-300 ${
+                  isSalesOpen ? "max-h-40" : "max-h-0"
+                }`}
               >
                 <li>
                   <Link
@@ -252,7 +258,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               </ul>
             </li>
 
-
             {/* Supplier Dropdown */}
             <li>
               <button
@@ -270,8 +275,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </svg>
                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Supplier</span>
                 <svg
-                  className={`w-3 h-3 transform transition-transform ${isSupplierOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-3 h-3 transform transition-transform ${
+                    isSupplierOpen ? "rotate-180" : ""
+                  }`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 10 6"
@@ -286,8 +292,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </svg>
               </button>
               <ul
-                className={`overflow-hidden transition-all duration-300 ${isSupplierOpen ? "max-h-40" : "max-h-0"
-                  }`}
+                className={`overflow-hidden transition-all duration-300 ${
+                  isSupplierOpen ? "max-h-40" : "max-h-0"
+                }`}
               >
                 <li>
                   <Link
@@ -307,8 +314,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 </li>
               </ul>
             </li>
-            {/* Login and Register Links */}
-            <li>
+
+              {/* Login and Register Links */}
+              <li>
               <Link
                 href="/login"
                 className="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -341,8 +349,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Register</span>
               </Link>
             </li>
-
-
           </ul>
         </div>
       </aside>
